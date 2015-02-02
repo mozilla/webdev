@@ -14,7 +14,7 @@
         },
         {
             "name": "errormill.mozilla.org",
-            "repos": [
+            "seeAlso": [
                 "https://getsentry.com/welcome/"
             ]
         },
@@ -106,12 +106,12 @@
         {
             "name": "wiki.mozilla.org",
             "repos": [
-                "http://www.mediawiki.org/wiki/MediaWiki"
+                "https://github.com/mozilla/wiki.mozilla.org"
             ]
         },
         {
             "name": "blog.mozilla.org",
-            "repos": [
+            "seeAlso": [
                 "https://wordpress.org/"
             ]
         },
