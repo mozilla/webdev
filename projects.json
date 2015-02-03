@@ -259,7 +259,7 @@
             ]
         },
         {
-            "name": "django-badget",
+            "name": "django-badger",
             "repos": [
                 "https://github.com/mozilla/django-badger"
             ]
