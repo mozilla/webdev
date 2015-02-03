@@ -14,7 +14,7 @@
         },
         {
             "name": "errormill.mozilla.org",
-            "seeAlso": [
+            "see_also": [
                 "https://getsentry.com/welcome/"
             ]
         },
@@ -111,7 +111,7 @@
         },
         {
             "name": "blog.mozilla.org",
-            "seeAlso": [
+            "see_also": [
                 "https://wordpress.org/"
             ]
         },
@@ -123,7 +123,7 @@
             ]
         },
         {
-            "name": "contribute.paas.allizom.org/",
+            "name": "contribute.paas.allizom.org",
             "repos": [
                 "https://github.com/mozilla/contribute.json"
             ]
