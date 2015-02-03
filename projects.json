@@ -315,6 +315,12 @@
             "repos": [
                 "https://github.com/erikrose/peep"
             ]
+        },
+        {
+            "name": "The Mozilla Foundation Client-Side Prototype",
+            "repos": [
+                "https://github.com/MozillaFoundation/mofo-example-app"
+            ]
         }
     ]
 }
