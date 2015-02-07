@@ -259,7 +259,7 @@
             ]
         },
         {
-            "name": "django-badget",
+            "name": "django-badger",
             "repos": [
                 "https://github.com/mozilla/django-badger"
             ]
@@ -274,6 +274,24 @@
             "name": "django-nose",
             "repos": [
                 "https://github.com/django-nose/django-nose"
+            ]
+        },
+        {
+            "name": "tower",
+            "repos": [
+                "https://github.com/clouserw/tower"
+            ]
+        },
+        {
+            "name": "django-ratelimit",
+            "repos": [
+                "https://github.com/jsocol/django-ratelimit"
+            ]
+        },
+        {
+            "name": "django-session-csrf",
+            "repos": [
+                "https://github.com/mozilla/django-session-csrf"
             ]
         }
     ],
