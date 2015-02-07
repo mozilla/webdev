@@ -309,6 +309,12 @@
             "repos": [
                 "https://github.com/mozilla/corsica"
             ]
+        },
+        {
+            "name": "peep",
+            "repos": [
+                "https://github.com/erikrose/peep"
+            ]
         }
     ]
 }
