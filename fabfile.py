@@ -40,8 +40,10 @@ def validate_contribute_json():
     t = Terminal()
     schema = get_schema()
 
+    get_name = lambda p: p.name
+    projects = sorted(get_projects(), key=get_name)
     passed, failed, skipped = [], [], []
-    for project in Bar('Validating').iter(list(get_projects())):
+    for project in Bar('Validating').iter(projects):
         if not project.repos:
             reason = 'No repos found'
             skipped.append((project, reason))
