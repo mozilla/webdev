@@ -17,12 +17,19 @@ gulp.task('serve', function() {
     })();
 });
 
-gulp.task('build', function() {
+gulp.task('build.templates', function() {
     nunjucksRender.nunjucks.configure(['src']);
-    return gulp.src('./src/**/*')
+    return gulp.src('./src/**/*.html')
         .pipe(nunjucksRender({foo: 'bar'}))
         .pipe(gulp.dest('./build'));
 });
+
+gulp.task('build.images', function() {
+    return gulp.src('./src/**/!(*.html)')
+        .pipe(gulp.dest('./build'));
+});
+
+gulp.task('build', ['build.templates', 'build.images']);
 
 gulp.task('deploy', ['build'], function() {
     return gulp.src('./build/**/*')
