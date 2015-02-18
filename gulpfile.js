@@ -6,8 +6,16 @@ var fs = require('fs');
 var GitHubApi = require("github");
 var gulp = require('gulp');
 var gutil = require('gulp-util');
+var jsonschema = require('jsonschema');
 var nunjucksRender = require('gulp-nunjucks-render');
+var ProgressBar = require('progress');
+var request = require('request');
 var serve = require('gulp-serve');
+var util = require('util');
+
+
+var CONTRIBUTE_JSON_URL = 'https://raw.githubusercontent.com/%s/%s/master/contribute.json';
+var CONTRIBUTE_JSON_SCHEMA = 'https://raw.githubusercontent.com/mozilla/contribute.json/master/schema.json';
 
 
 // Set up Github API connection if necessary.
@@ -67,7 +75,7 @@ gulp.task('build.projectdata', function(callback) {
         }
     }
 
-    var projects = JSON.parse(fs.readFileSync('projects.json'));
+    var projects = loadProjects();
     projects.lastUpdated = Date.now();
 
     // Annnotate the projects with extra data and s
@@ -120,6 +128,107 @@ gulp.task('deploy', ['build'], function() {
 });
 
 /**
+ * Download and validate contribute.json files for all the projects in
+ * projects.json.
+ */
+gulp.task('validate_contribute_json', function(gulpCallback) {
+    var projects = allProjects(loadProjects());
+    var bar = new ProgressBar(':bar', {total: projects.length});
+    var passed = [];
+    var failed = [];
+    var skipped = [];
+
+    // Sort projects by name.
+    projects.sort(function(a, b) {
+        return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+    });
+
+    async.each(projects, function(project, eachCallback) {
+        if (!project.github) {
+            skipped.push({project: project, reason: 'No Github repo.'});
+            bar.tick();
+            return eachCallback();
+        }
+
+        var url = util.format(CONTRIBUTE_JSON_URL, project.github.user,
+                              project.github.repository);
+        request(url, function(error, response, body) {
+            if (error) {
+                failed.push({
+                    project: project,
+                    reason: 'Error downloading contribute.json: ' + error
+                });
+                bar.tick();
+                eachCallback();
+            } else if (response.statusCode != 200) {
+                failed.push({
+                    project: project,
+                    reason: 'Bad response code: ' + response.statusCode,
+                });
+                bar.tick();
+                eachCallback();
+            } else {
+                var contributeJSON = JSON.parse(body);
+                validateContributeJSON(contributeJSON, function(result) {
+                    if (result.errors.length > 0) {
+                        failed.push({
+                            project: project,
+                            reason: 'Failed validation.',
+                            validationResult: result,
+                        });
+                        bar.tick();
+                        eachCallback();
+                    } else {
+                        passed.push(project);
+                        bar.tick();
+                        eachCallback();
+                    }
+                });
+            }
+        });
+    }, function() {
+        gutil.log(gutil.colors.green('== Passed =='));
+        passed.forEach(function(project) {
+            gutil.log('  ' + gutil.colors.underline(project.name));
+        });
+
+        gutil.log(gutil.colors.red('== Failed =='));
+        failed.forEach(function(result) {
+            gutil.log('  ' + gutil.colors.underline(result.project.name));
+            gutil.log('    ' + result.reason);
+            if (result.validationResult) {
+                gutil.log(result.validationResult.errors);
+            }
+        });
+
+        gutil.log(gutil.colors.yellow('== Skipped =='));
+        skipped.forEach(function(result) {
+            gutil.log('  ' + gutil.colors.underline(result.project.name));
+            gutil.log('    ' + result.reason);
+        });
+    });
+});
+
+var _contributeSchema = null;
+function getContributeSchema(callback) {
+    if (!_contributeSchema) {
+        request(CONTRIBUTE_JSON_SCHEMA, function(error, response, body) {
+            // TODO: Handle errors fetching this.
+            _contributeSchema = JSON.parse(body);
+            callback(_contributeSchema);
+        });
+    } else {
+        callback(_contributeSchema);
+    }
+}
+
+function validateContributeJSON(contributeJSON, callback) {
+    getContributeSchema(function(contributeSchema) {
+        callback(jsonschema.validate(contributeJSON, contributeSchema));
+    });
+}
+
+/**
  * Return a list of every individual project from the categorized lists in
  * projects.json.
  */
@@ -132,6 +241,13 @@ function allProjects(projects) {
     });
 
     return _allProjects;
+}
+
+/**
+ * Load projects.json.
+ */
+function loadProjects() {
+    return JSON.parse(fs.readFileSync('projects.json'));
 }
 
 /**

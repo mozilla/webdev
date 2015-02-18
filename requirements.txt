@@ -1,5 +1,0 @@
-Fabric
-blessings
-jsonschema
-progress
-requests
