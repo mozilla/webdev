@@ -1,3 +1,5 @@
+{% from 'macros.lib.html' import project_list %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,10 +7,14 @@
     <title>Mozilla Webdev</title>
   </head>
   <body>
-    <center>
-      <h1>Mozilla Webdev</h1>
-      <p>Hi! Please ignore how barren this page is, it's a work in progress! I mostly put it up to test the deployment command for this project.</p>
-      <img src="under_construction.gif">
-    </center>
+    <h1>Mozilla Webdev</h1>
+    <h2>Websites</h2>
+    {{ project_list(projects['websites']) }}
+    <h2>Libraries</h2>
+    {{ project_list(projects['libraries']) }}
+    <h2>Apps</h2>
+    {{ project_list(projects['apps']) }}
+    <h2>Other</h2>
+    {{ project_list(projects['other']) }}
   </body>
 </html>

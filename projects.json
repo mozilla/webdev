@@ -4,13 +4,21 @@
             "name": "www.mozilla.org",
             "repos": [
                 "https://github.com/mozilla/bedrock"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "bedrock"
+            }
         },
         {
             "name": "affiliates.mozilla.org",
             "repos": [
                 "https://github.com/mozilla/affiliates"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "affiliates"
+            }
         },
         {
             "name": "errormill.mozilla.org",
@@ -22,92 +30,152 @@
             "name": "support.mozilla.org",
             "repos": [
                 "https://github.com/mozilla/kitsune/"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "kitsune"
+            }
         },
         {
             "name": "firefoxflicks.mozilla.org",
             "repos": [
                 "https://github.com/mozilla/firefox-flicks"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "firefox-flicks"
+            }
         },
         {
             "name": "snippets.mozilla.com",
             "repos": [
                 "https://github.com/mozilla/snippets-service"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "snippets-service"
+            }
         },
         {
             "name": "reps.mozilla.org",
             "repos": [
                 "https://github.com/mozilla/remo/"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "remo"
+            }
         },
         {
             "name": "mozillians.org",
             "repos": [
                 "https://github.com/mozilla/mozillians/"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "mozillians"
+            }
         },
         {
             "name": "addons.mozilla.org",
             "repos": [
                 "https://github.com/mozilla/olympia/"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "olympia"
+            }
         },
         {
             "name": "marketplace.firefox.com",
             "repos": [
                 "https://github.com/mozilla/zamboni",
                 "https://github.com/mozilla/fireplace"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "zamboni"
+            }
         },
         {
             "name": "crash-stats.mozilla.org",
             "repos": [
                 "https://github.com/mozilla/socorro/"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "socorro"
+            }
         },
         {
             "name": "developer.mozilla.org",
             "repos": [
                 "https://github.com/mozilla/kuma"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "kuma"
+            }
         },
         {
             "name": "dxr.mozilla.org",
             "repos": [
                 "https://github.com/mozilla/dxr"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "dxr"
+            }
         },
         {
             "name": "air.mozilla.org",
             "repos": [
                 "https://github.com/mozilla/airmozilla/"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "airmozilla"
+            }
         },
         {
             "name": "input.mozilla.org",
             "repos": [
                 "https://github.com/mozilla/fjord"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "fjord"
+            }
         },
         {
             "name": "webmaker.org",
             "repos": [
                 "https://github.com/mozilla/webmaker.org/"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "webmaker.org"
+            }
         },
         {
             "name": "oneanddone.mozilla.org",
             "repos": [
                 "https://github.com/mozilla/oneanddone"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "oneanddone"
+            }
         },
         {
             "name": "wiki.mozilla.org",
             "repos": [
                 "https://github.com/mozilla/wiki.mozilla.org"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "wiki.mozilla.org"
+            }
         },
         {
             "name": "blog.mozilla.org",
@@ -120,61 +188,101 @@
             "repos": [
                 "https://github.com/mozilla/basket",
                 "https://github.com/mozilla/basket-client/"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "basket"
+            }
         },
         {
             "name": "contribute.paas.allizom.org",
             "repos": [
                 "https://github.com/mozilla/contribute.json"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "contribute.json"
+            }
         },
         {
             "name": "webwewant.mozilla.org",
             "repos": [
                 "https://github.com/mozilla/mrburns"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "mrburns"
+            }
         },
         {
             "name": "nightly.mozilla.org",
             "repos": [
                 "https://github.com/mozilla/nocturnal"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "nocturnal"
+            }
         },
         {
             "name": "scrumbu.gs",
             "repos": [
                 "https://github.com/mozilla/scrumbugz"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "scrumbugz"
+            }
         },
         {
             "name": "location.services.mozilla.com",
             "repos": [
                 "https://github.com/mozilla/ichnaea"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "ichnaea"
+            }
         },
         {
             "name": "mobilepartners.mozilla.org",
             "repos": [
                 "https://github.com/mozilla/fxoss"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "fxoss"
+            }
         },
         {
             "name": "openstandard.mozilla.org",
             "repos": [
                 "https://github.com/mozilla/theopenstandard"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "theopenstandard"
+            }
         },
         {
             "name": "careers.mozilla.org",
             "repos": [
                 "https://github.com/mozilla/lumbergh"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "lumbergh"
+            }
         },
         {
             "name": "peekaboo.mozilla.org",
             "repos": [
                 "https://github.com/mozilla/peekaboo"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "peekaboo"
+            }
         }
     ],
     "libraries": [
@@ -182,19 +290,31 @@
             "name": "django-browserid",
             "repos": [
                 "https://github.com/mozilla/django-browserid"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "django-browserid"
+            }
         },
         {
             "name": "jingo",
             "repos": [
                 "https://github.com/jbalogh/jingo"
-            ]
+            ],
+            "github": {
+                "user": "jbalogh",
+                "repository": "jingo"
+            }
         },
         {
             "name": "jingo-minify",
             "repos": [
                 "https://github.com/jsocol/jingo-minify"
-            ]
+            ],
+            "github": {
+                "user": "jsocol",
+                "repository": "jingo-minify"
+            }
         },
         {
             "name": "playdoh",
@@ -202,97 +322,161 @@
                 "https://github.com/mozilla/playdoh",
                 "https://github.com/mozilla/playdoh-lib",
                 "https://github.com/mozilla/funfactory"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "playdoh"
+            }
         },
         {
             "name": "brick",
             "repos": [
                 "https://github.com/mozbrick/brick/"
-            ]
+            ],
+            "github": {
+                "user": "mozbrick",
+                "repository": "brick"
+            }
         },
         {
             "name": "nunjucks",
             "repos": [
                 "https://github.com/mozilla/nunjucks"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "nunjucks"
+            }
         },
         {
             "name": "sugardough",
             "repos": [
                 "https://github.com/mozilla/sugardough"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "sugardough"
+            }
         },
         {
             "name": "commonware",
             "repos": [
                 "https://github.com/jsocol/commonware"
-            ]
+            ],
+            "github": {
+                "user": "jsocol",
+                "repository": "commonware"
+            }
         },
         {
             "name": "configman",
             "repos": [
                 "https://github.com/mozilla/configman"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "configman"
+            }
         },
         {
             "name": "crontabber",
             "repos": [
                 "https://github.com/mozilla/crontabber"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "crontabber"
+            }
         },
         {
             "name": "django-waffle",
             "repos": [
                 "https://github.com/jsocol/django-waffle"
-            ]
+            ],
+            "github": {
+                "user": "jsocol",
+                "repository": "django-waffle"
+            }
         },
         {
             "name": "django-soapbox",
             "repos": [
                 "https://github.com/ubernostrum/django-soapbox"
-            ]
+            ],
+            "github": {
+                "user": "ubernostrum",
+                "repository": "django-soapbox"
+            }
         },
         {
             "name": "bleach",
             "repos": [
                 "https://github.com/jsocol/bleach"
-            ]
+            ],
+            "github": {
+                "user": "jsocol",
+                "repository": "bleach"
+            }
         },
         {
             "name": "django-badger",
             "repos": [
                 "https://github.com/mozilla/django-badger"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "django-badger"
+            }
         },
         {
             "name": "django-constance",
             "repos": [
                 "https://github.com/jezdez/django-constance"
-            ]
+            ],
+            "github": {
+                "user": "jezdez",
+                "repository": "django-constance"
+            }
         },
         {
             "name": "django-nose",
             "repos": [
                 "https://github.com/django-nose/django-nose"
-            ]
+            ],
+            "github": {
+                "user": "django-nose",
+                "repository": "django-nose"
+            }
         },
         {
             "name": "tower",
             "repos": [
                 "https://github.com/clouserw/tower"
-            ]
+            ],
+            "github": {
+                "user": "clouserw",
+                "repository": "tower"
+            }
         },
         {
             "name": "django-ratelimit",
             "repos": [
                 "https://github.com/jsocol/django-ratelimit"
-            ]
+            ],
+            "github": {
+                "user": "jsocol",
+                "repository": "django-ratelimit"
+            }
         },
         {
             "name": "django-session-csrf",
             "repos": [
                 "https://github.com/mozilla/django-session-csrf"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "django-session-csrf"
+            }
         }
     ],
     "apps": [
@@ -300,7 +484,11 @@
             "name": "Buddyup",
             "repos": [
                 "https://github.com/mozilla/buddyup"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "buddyup"
+            }
         }
     ],
     "other": [
@@ -308,19 +496,31 @@
             "name": "corsica",
             "repos": [
                 "https://github.com/mozilla/corsica"
-            ]
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "corsica"
+            }
         },
         {
             "name": "peep",
             "repos": [
                 "https://github.com/erikrose/peep"
-            ]
+            ],
+            "github": {
+                "user": "erikrose",
+                "repository": "peep"
+            }
         },
         {
             "name": "The Mozilla Foundation Client-Side Prototype",
             "repos": [
                 "https://github.com/MozillaFoundation/mofo-example-app"
-            ]
+            ],
+            "github": {
+                "user": "MozillaFoundation",
+                "repository": "mofo-example-app"
+            }
         }
     ]
 }
