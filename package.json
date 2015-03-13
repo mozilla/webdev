@@ -13,6 +13,7 @@
     "dotenv": "^0.5.1",
     "github": "^0.2.3",
     "gulp": "^3.8.11",
+    "gulp-babel": "^4.0.0",
     "gulp-gh-pages": "^0.4.0",
     "gulp-myth": "^1.0.2",
     "gulp-nunjucks-render": "^0.1.3",

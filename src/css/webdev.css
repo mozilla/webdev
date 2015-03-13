@@ -7,6 +7,7 @@
 
     --project-background: linear-gradient(#EAEFF2, #D4DDE4);
     --project-text-color: #424F5A;
+    --project-tag-background: #ADBFCC;
 
     --footer-background: #FFF;
     --footer-text-color: #424F5A;
@@ -129,6 +130,25 @@ a:hover {
     margin-left: auto;
 }
 
+.project .keywords {
+    list-style-type: none;
+    margin: 0 0 -8px;
+    padding: 0;
+}
+
+.project .keywords li {
+    background: var(--project-tag-background);
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0 5px 8px 0;
+    padding: 2px 4px;
+}
+
+.project .keywords .show-all {
+    background: none;
+}
+
 #colophon {
     background: var(--footer-background);
     color: var(--footer-text-color);
@@ -146,4 +166,43 @@ a:hover {
     /* Set dimensions to half-size for hi-DPI screens. */
     height: calc(83px / 2);
     width: calc(260px / 2);
+}
+
+/* Recognized keyword colors */
+
+.project .keywords li[data-keyword="python"] {
+    background: #3771A3;
+    color: #FFF;
+}
+
+.project .keywords li[data-keyword="less-css"] {
+    background: #1D365D;
+    color: #FFF;
+}
+
+.project .keywords li[data-keyword="django"] {
+    background: #103E2E;
+    color: #FFF;
+}
+
+.project .keywords li[data-keyword="html"],
+.project .keywords li[data-keyword="html5"] {
+    background: #F06529;
+    color: #FFF;
+}
+
+.project .keywords li[data-keyword="javascript"] {
+    background: #F0DB4F;
+    color: #323330;
+}
+
+.project .keywords li[data-keyword="node"],
+.project .keywords li[data-keyword="nodejs"] {
+    background: #333333;
+    color: #7FBD42;
+}
+
+.project .keywords li[data-keyword="css"] {
+    background: #33A9DC;
+    color: #FFF;
 }

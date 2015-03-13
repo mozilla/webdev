@@ -1,5 +1,6 @@
 var argv = require('yargs').argv;
 var async = require('async');
+var babel = require('gulp-babel');
 var del = require('del');
 var deploy = require('gulp-gh-pages');
 var dotenv = require('dotenv');
@@ -103,7 +104,7 @@ gulp.task('build.templates', ['build.projectdata'], function() {
     var projects = JSON.parse(fs.readFileSync('build/projects.json'));
     var githubProjects = allProjects(projects, function(p) {return p.github;});
     githubProjects.sort(function(a, b) {
-        return b.stars - a.stars;
+        return b.github.stars - a.github.stars;
     });
 
     var ctx = {
@@ -120,7 +121,7 @@ gulp.task('build.templates', ['build.projectdata'], function() {
  * Copy other files over to the build directory.
  */
 gulp.task('build.static', function() {
-    return gulp.src('./src/**/!(*.html|*.css)')
+    return gulp.src('./src/**/!(*.html|*.css|*.js)')
         .pipe(gulp.dest('./build'));
 });
 
@@ -135,9 +136,19 @@ gulp.task('build.css', function() {
 });
 
 /**
+ * Build JS files by running them through Babel.
+ */
+gulp.task('build.js', function() {
+    return gulp.src('./src/**/*.js')
+        .pipe(plumber())
+        .pipe(babel())
+        .pipe(gulp.dest('./build'));
+});
+
+/**
  * Full build of the static site.
  */
-gulp.task('build', ['build.templates', 'build.css', 'build.static']);
+gulp.task('build', ['build.templates', 'build.css', 'build.js', 'build.static']);
 
 gulp.task('clean', function(cb) {
     del('build/**/*', cb);
@@ -174,25 +185,15 @@ gulp.task('validate_contribute_json', function(gulpCallback) {
             return eachCallback();
         }
 
-        var url = util.format(CONTRIBUTE_JSON_URL, project.github.user,
-                              project.github.repository);
-        request(url, function(error, response, body) {
+        getContributeJSON(project, function(contributeJSON, error) {
             if (error) {
                 failed.push({
                     project: project,
-                    reason: 'Error downloading contribute.json: ' + error
-                });
-                bar.tick();
-                eachCallback();
-            } else if (response.statusCode != 200) {
-                failed.push({
-                    project: project,
-                    reason: 'Bad response code: ' + response.statusCode,
+                    reason: error
                 });
                 bar.tick();
                 eachCallback();
             } else {
-                var contributeJSON = JSON.parse(body);
                 validateContributeJSON(contributeJSON, function(result) {
                     if (result.errors.length > 0) {
                         failed.push({
@@ -232,6 +233,25 @@ gulp.task('validate_contribute_json', function(gulpCallback) {
         });
     });
 });
+
+function getContributeJSON(project, callback) {
+    if (!project.github) {
+        callback(null, 'No Github repo.');
+    }
+
+    var url = util.format(CONTRIBUTE_JSON_URL, project.github.user,
+                          project.github.repository);
+    request(url, function(error, response, body) {
+        if (error) {
+            callback(null, 'Error downloading contribute.json: ' + error);
+        } else if (response.statusCode != 200) {
+            callback(null, 'Bad response code: ' + response.statusCode);
+        } else {
+            var contributeJSON = JSON.parse(body);
+            callback(contributeJSON, null);
+        }
+    });
+}
 
 var _contributeSchema = null;
 function getContributeSchema(callback) {
@@ -287,18 +307,33 @@ function annotateProject(project, callback) {
     }
 
     if (project.github) {
-        github.repos.get({
-            user: project.github.user,
-            repo: project.github.repository,
-        }, function(err, result) {
-            if (err) {
-                callback(err);
-            } else {
-                project.description = result.description;
-                project.stars = result.stargazers_count;
-                project.forks = result.forks_count;
-                callback();
-            }
+        async.series([function(pcallback) {
+            github.repos.get({
+                user: project.github.user,
+                repo: project.github.repository,
+            }, function(err, result) {
+                if (err) {
+                    pcallback(err);
+                } else {
+                    project.github.description = result.description;
+                    project.description = result.description;
+                    project.github.stars = result.stargazers_count;
+                    project.github.forks = result.forks_count;
+                    pcallback();
+                }
+            });
+        }, function(pcallback) {
+            getContributeJSON(project, function(contributeJSON, error) {
+                if (error) {
+                    pcallback(error);
+                } else {
+                    project.contributeJSON = contributeJSON;
+                    project.description = contributeJSON.description || project.description;
+                    pcallback();
+                }
+            });
+        }], function() {
+            callback();
         });
     } else {
         callback();
