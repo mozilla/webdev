@@ -389,36 +389,6 @@
             }
         },
         {
-            "name": "django-waffle",
-            "repos": [
-                "https://github.com/jsocol/django-waffle"
-            ],
-            "github": {
-                "user": "jsocol",
-                "repository": "django-waffle"
-            }
-        },
-        {
-            "name": "django-soapbox",
-            "repos": [
-                "https://github.com/ubernostrum/django-soapbox"
-            ],
-            "github": {
-                "user": "ubernostrum",
-                "repository": "django-soapbox"
-            }
-        },
-        {
-            "name": "bleach",
-            "repos": [
-                "https://github.com/jsocol/bleach"
-            ],
-            "github": {
-                "user": "jsocol",
-                "repository": "bleach"
-            }
-        },
-        {
             "name": "django-badger",
             "repos": [
                 "https://github.com/mozilla/django-badger"
@@ -426,16 +396,6 @@
             "github": {
                 "user": "mozilla",
                 "repository": "django-badger"
-            }
-        },
-        {
-            "name": "django-constance",
-            "repos": [
-                "https://github.com/jezdez/django-constance"
-            ],
-            "github": {
-                "user": "jezdez",
-                "repository": "django-constance"
             }
         },
         {
@@ -456,16 +416,6 @@
             "github": {
                 "user": "clouserw",
                 "repository": "tower"
-            }
-        },
-        {
-            "name": "django-ratelimit",
-            "repos": [
-                "https://github.com/jsocol/django-ratelimit"
-            ],
-            "github": {
-                "user": "jsocol",
-                "repository": "django-ratelimit"
             }
         },
         {
