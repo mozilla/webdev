@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #1E1E21  no-repeat scroll center top / 100% 500px;
+  background: radial-gradient(ellipse farthest-side at left top,
+                                   #00549E 0px, transparent 100%)
+                   #1E1E21  no-repeat;
+  background-size: auto 640px;
+  color: #FFF;
+  font: 14px 'Fira Sans', sans-serif;
+}
+
+a {
+  color: #0095DD;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#tabzilla-border {
+  border-top: 2px solid #FFF;
+}
+
+#wrapper {
+  margin: 0 auto;
+  width: 960px;
+}
+
+#masthead {
+  padding: 20px 0;
+}
+
+#masthead h1 {
+  margin: 0;
+}
+
+.wordmark {
+  height: 84px;
+  width: 155.5px;
+}
+
+#intro {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+#intro h2 {
+  font-size: 42px;
+  font-weight: 400;
+  margin: 0;
+}
+
+#intro p {
+  font-size: 24px;
+  font-weight: 200;
+  margin: 0 auto;
+  width: 640px;
+}
+
+#intro a {
+  font-weight: 300;
+}
+
+#projects h2 {
+  font-size: 28px;
+  font-weight: 400;
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.columns {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.column {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.column.left {
+  margin-right: 20px;
+}
+
+.project {
+  background: linear-gradient(#EAEFF2, #D4DDE4);
+  color: #424F5A;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.project a {
+  color: #00549E;
+}
+
+.project .stars,
+.project .forks {
+  float: right;
+  margin-left: 5px;
+}
+
+.project h3 {
+  margin: 0 0 10px;
+}
+
+.project p {
+  margin: 0 0 10px;
+}
+
+#colophon {
+  background: #FFF;
+  color: #424F5A;
+  height: 150px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+#colophon p {
+  margin: 0;
+  padding: 10px 0 5px;
+}
+
+.footer-logo {
+  height: 41.5px;
+  width: 130px;
+}
