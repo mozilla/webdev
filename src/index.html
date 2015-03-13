@@ -1,20 +1,54 @@
-{% from 'macros.lib.html' import project_list %}
+{% from 'macros.lib.html' import project_box %}
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Mozilla Webdev</title>
+    <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css">
+    <link href="https://mozorg.cdn.mozilla.net/media/css/tabzilla-min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/fontello.css">
+    <link rel="stylesheet" href="css/webdev.css">
   </head>
   <body>
-    <h1>Mozilla Webdev</h1>
-    <h2>Websites</h2>
-    {{ project_list(projects['websites']) }}
-    <h2>Libraries</h2>
-    {{ project_list(projects['libraries']) }}
-    <h2>Apps</h2>
-    {{ project_list(projects['apps']) }}
-    <h2>Other</h2>
-    {{ project_list(projects['other']) }}
+    <div id="tabzilla-border"></div>
+    <div id="wrapper">
+      <a href="https://www.mozilla.org/" id="tabzilla">mozilla</a>
+      <header id="masthead">
+        <h1><img src="img/wordmark.png" class="wordmark" alt="mozilla webdev"></h1>
+      </header>
+      <section id="intro">
+        <h2>Building a better Web</h2>
+        <p>Webdev is an informal group of Mozillians who develop websites and web services to further our <a href="https://www.mozilla.org/about/manifesto/">mission</a>.</p>
+      </section>
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="columns">
+          <div class="column left">
+            {% for project in projects %}
+              {% if loop.index0 % 2 == 0 %}
+                {{ project_box(project) }}
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="column">
+            {% for project in projects %}
+              {% if loop.index0 % 2 == 1 %}
+                {{ project_box(project) }}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer id="colophon">
+      <p><a href="https://www.mozilla.org"><img src="img/mozilla.png" alt="mozilla" class="footer-logo"></a></p>
+      <p>Portions of this content are &copy;{{ thisYear }} by individual mozilla.org contributors. Content available under a <a href="https://www.mozilla.org/foundation/licensing/website-content/">Creative Commons license</a>.</p>
+      <p><a href="https://github.com/mozilla/webdev">Contribute to this page</a></p>
+    </footer>
+
+  <script src="//mozorg.cdn.mozilla.net/tabzilla/tabzilla.js"></script>
   </body>
 </html>

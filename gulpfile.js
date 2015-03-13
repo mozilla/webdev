@@ -1,5 +1,6 @@
 var argv = require('yargs').argv;
 var async = require('async');
+var del = require('del');
 var deploy = require('gulp-gh-pages');
 var dotenv = require('dotenv');
 var fs = require('fs');
@@ -7,7 +8,9 @@ var GitHubApi = require("github");
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var jsonschema = require('jsonschema');
+var myth = require('gulp-myth');
 var nunjucksRender = require('gulp-nunjucks-render');
+var plumber = require('gulp-plumber');
 var ProgressBar = require('progress');
 var request = require('request');
 var serve = require('gulp-serve');
@@ -98,26 +101,47 @@ gulp.task('build.templates', ['build.projectdata'], function() {
     nunjucksRender.nunjucks.configure(['src']);
 
     var projects = JSON.parse(fs.readFileSync('build/projects.json'));
+    var githubProjects = allProjects(projects, function(p) {return p.github;});
+    githubProjects.sort(function(a, b) {
+        return b.stars - a.stars;
+    });
+
     var ctx = {
-        projects: projects
+        projects: githubProjects,
+        thisYear: new Date().getFullYear(),
     };
     return gulp.src('./src/**/!(*.lib).html')
+        .pipe(plumber())
         .pipe(nunjucksRender(ctx))
         .pipe(gulp.dest('./build'));
 });
 
 /**
- * Copy non-HTML files over to the build directory.
+ * Copy other files over to the build directory.
  */
 gulp.task('build.static', function() {
-    return gulp.src('./src/**/!(*.html)')
+    return gulp.src('./src/**/!(*.html|*.css)')
+        .pipe(gulp.dest('./build'));
+});
+
+/**
+ * Build CSS files by running them through myth.
+ */
+gulp.task('build.css', function() {
+    return gulp.src('./src/**/*.css')
+        .pipe(plumber())
+        .pipe(myth())
         .pipe(gulp.dest('./build'));
 });
 
 /**
  * Full build of the static site.
  */
-gulp.task('build', ['build.templates', 'build.static']);
+gulp.task('build', ['build.templates', 'build.css', 'build.static']);
+
+gulp.task('clean', function(cb) {
+    del('build/**/*', cb);
+});
 
 /**
  * Build the site, commit it to the gh-pages branch, and push to origin.
@@ -232,10 +256,11 @@ function validateContributeJSON(contributeJSON, callback) {
  * Return a list of every individual project from the categorized lists in
  * projects.json.
  */
-function allProjects(projects) {
+function allProjects(projects, filter) {
     var _allProjects = [];
     ['websites', 'libraries', 'apps', 'other'].forEach(function(category) {
         projects[category].forEach(function(project) {
+            if (filter && !filter(project)) return;
             _allProjects.push(project);
         });
     });
@@ -271,6 +296,7 @@ function annotateProject(project, callback) {
             } else {
                 project.description = result.description;
                 project.stars = result.stargazers_count;
+                project.forks = result.forks_count;
                 callback();
             }
         });

@@ -1,21 +1,16 @@
-{% macro project_list(projects) -%}
-<ul>
-  {% for project in projects %}
-    <li>
-      {% if project['link'] %}
-        <a href="{{ project['link'] }}"><h3>{{ project['name'] }}</h3></a>
-      {% else %}
-        <h3>{{ project['name'] }}</h3>
-      {% endif %}
+{% macro project_box(project) -%}
+  <div class="project">
+    <div class="stars"><i class="icon-star"></i> {{ project['stars'] or 0 }}</div>
+    <div class="forks"><i class="icon-fork"></i> {{ project['forks'] or 0}}</div>
 
-      {% if project['description'] %}
-        <p class="description">{{ project['description'] }}</p>
-      {% endif %}
+    {% if project['link'] %}
+      <a href="{{ project['link'] }}"><h3>{{ project['name'] }}</h3></a>
+    {% else %}
+      <h3>{{ project['name'] }}</h3>
+    {% endif %}
 
-      {% if project['stars'] %}
-        <div class="stars">{{ project['stars'] }} stars</div>
-      {% endif %}
-    </li>
-  {% endfor %}
-</ul>
+    {% if project['description'] %}
+      <p class="description">{{ project['description'] }}</p>
+    {% endif %}
+  </div>
 {%- endmacro %}
