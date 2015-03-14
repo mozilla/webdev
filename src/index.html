@@ -25,20 +25,9 @@
       <section id="projects">
         <h2>Projects</h2>
         <div class="columns">
-          <div class="column left">
-            {% for project in projects %}
-              {% if loop.index0 % 2 == 0 %}
-                {{ project_box(project) }}
-              {% endif %}
-            {% endfor %}
-          </div>
-          <div class="column">
-            {% for project in projects %}
-              {% if loop.index0 % 2 == 1 %}
-                {{ project_box(project) }}
-              {% endif %}
-            {% endfor %}
-          </div>
+          {% for project in projects %}
+            {{ project_box(project) }}
+          {% endfor %}
         </div>
       </section>
     </div>
