@@ -38,15 +38,21 @@ a:hover {
 
 #wrapper {
     margin: 0 auto;
-    width: 960px;
 }
 
 #masthead {
     padding: 20px 0;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #masthead h1 {
     margin: 0;
+}
+
+#masthead img {
+    height: 84px;
 }
 
 .wordmark {
@@ -70,7 +76,7 @@ a:hover {
     font-size: 24px;
     font-weight: 200;
     margin: 0 auto;
-    width: 640px;
+    max-width: 640px;
 }
 
 #intro a {
@@ -86,6 +92,11 @@ a:hover {
 
 .columns {
     display: flex;
+    flex-flow: row wrap;
+    max-width: 960px;
+    clear: both;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .column {
@@ -101,6 +112,9 @@ a:hover {
     color: var(--project-text-color);
     margin-bottom: 20px;
     padding: 10px;
+    flex-grow: 2;
+    margin: 5px 10px;
+    width: 460px;
 }
 
 .project .stars,
@@ -115,6 +129,10 @@ a:hover {
 
 .project p {
     margin: 0 0 10px;
+}
+
+.project .topBar {
+    display: flex;
 }
 
 #colophon {

@@ -1,13 +1,14 @@
 {% macro project_box(project) -%}
   <div class="project">
-    <div class="stars"><i class="icon-star"></i> {{ project['stars'] or 0 }}</div>
-    <div class="forks"><i class="icon-fork"></i> {{ project['forks'] or 0}}</div>
-
-    {% if project['link'] %}
-      <a href="{{ project['link'] }}"><h3>{{ project['name'] }}</h3></a>
-    {% else %}
-      <h3>{{ project['name'] }}</h3>
-    {% endif %}
+    <span class='topBar'>   
+      {% if project['link'] %}
+        <a href="{{ project['link'] }}"><h3>{{ project['name'] }}</h3></a>
+      {% else %}
+        <h3>{{ project['name'] }}</h3>
+      {% endif %}
+      <div class="stars"><i class="icon-star"></i> {{ project['stars'] or 0 }}</div>
+      <div class="forks"><i class="icon-fork"></i> {{ project['forks'] or 0}}</div>
+    </span>
 
     {% if project['description'] %}
       <p class="description">{{ project['description'] }}</p>
