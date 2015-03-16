@@ -3,10 +3,9 @@
 }
 
 body {
-  background: #1E1E21  no-repeat scroll center top / 100% 500px;
   background: radial-gradient(ellipse farthest-side at left top,
-                                   #00549E 0px, transparent 100%)
-                   #1E1E21  no-repeat;
+                                  #00549E 0px, transparent 100%)
+                   #1E1E21 no-repeat;
   background-size: auto 640px;
   color: #FFF;
   font: 14px 'Fira Sans', sans-serif;
@@ -39,6 +38,7 @@ a:hover {
 }
 
 .wordmark {
+  /* Set dimensions to half-size for hi-DPI screens. */
   height: 84px;
   width: 155.5px;
 }
@@ -95,10 +95,6 @@ a:hover {
   padding: 10px;
 }
 
-.project a {
-  color: #00549E;
-}
-
 .project .stars,
 .project .forks {
   float: right;
@@ -127,6 +123,7 @@ a:hover {
 }
 
 .footer-logo {
+  /* Set dimensions to half-size for hi-DPI screens. */
   height: 41.5px;
   width: 130px;
 }
