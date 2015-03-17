@@ -6,8 +6,10 @@
       {% else %}
         <h3>{{ project['name'] }}</h3>
       {% endif %}
-      <div class="stars"><i class="icon-star"></i> {{ project['stars'] or 0 }}</div>
-      <div class="forks"><i class="icon-fork"></i> {{ project['forks'] or 0}}</div>
+      <div class="right">
+        <div class="stars"><i class="icon-star"></i> {{ project['stars'] or 0 }}</div>
+        <div class="forks"><i class="icon-fork"></i> {{ project['forks'] or 0}}</div>
+      </div>
     </span>
 
     {% if project['description'] %}

@@ -125,6 +125,10 @@ a:hover {
     display: flex;
 }
 
+.project .topBar .right {
+    margin-left: auto;
+}
+
 #colophon {
     background: var(--footer-background);
     color: var(--footer-text-color);
