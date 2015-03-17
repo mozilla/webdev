@@ -9,6 +9,10 @@
     --project-text-color: #424F5A;
     --project-tag-background: #ADBFCC;
 
+    --pagination-background: linear-gradient(#EAEFF2, #D4DDE4);
+    --pagination-text-color: #424F5A;
+    --pagination-link-color: #0095DD;
+
     --footer-background: #FFF;
     --footer-text-color: #424F5A;
 }
@@ -147,6 +151,30 @@ a:hover {
 
 .project .keywords .show-all {
     background: none;
+}
+
+.simple-pagination ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px;
+}
+
+.simple-pagination li {
+    background: var(--pagination-background);
+    color: var(--pagination-text-color);
+    display: inline-block;
+    padding: 0;
+    margin-right: 5px;
+}
+
+.simple-pagination li span,
+.simple-pagination li a {
+    padding: 10px;
+    line-height: 26px;
+}
+
+.simple-pagination li a {
+    color: var(--pagination-link-color);
 }
 
 #colophon {
