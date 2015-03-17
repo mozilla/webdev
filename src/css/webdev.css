@@ -49,10 +49,6 @@ a:hover {
     margin: 0;
 }
 
-#masthead img {
-    height: 84px;
-}
-
 .wordmark {
     /* Set dimensions to half-size for hi-DPI screens. */
     height: calc(168px / 2);
