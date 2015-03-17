@@ -132,7 +132,7 @@ a:hover {
 #colophon {
     background: var(--footer-background);
     color: var(--footer-text-color);
-    height: 150px;
+    min-height: 150px;
     margin-top: 20px;
     text-align: center;
 }
