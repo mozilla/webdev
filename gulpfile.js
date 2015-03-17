@@ -40,7 +40,7 @@ if (process.env.GITHUB_USERNAME && process.env.GITHUB_PASSWORD) {
  * Run a local development server. The site is re-generated automatically when
  * changes are made.
  */
-gulp.task('serve', function() {
+gulp.task('serve', ['build'], function() {
     var watcher = gulp.watch('./src/**/*', ['build']);
     watcher.on('change', function(event) {
         gutil.log(gutil.colors.cyan('Change detected, rebuilding.'));
