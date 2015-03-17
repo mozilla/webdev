@@ -5,7 +5,7 @@
 body {
   background: radial-gradient(ellipse farthest-side at left top,
                                   #00549E 0px, transparent 100%)
-                   #1E1E21 no-repeat;
+                  #1E1E21 no-repeat;
   background-size: auto 640px;
   color: #FFF;
   font: 14px 'Fira Sans', sans-serif;
@@ -26,7 +26,7 @@ a:hover {
 
 #wrapper {
   margin: 0 auto;
-  width: 960px;
+  max-width: 960px;
 }
 
 #masthead {
@@ -58,7 +58,7 @@ a:hover {
   font-size: 24px;
   font-weight: 200;
   margin: 0 auto;
-  width: 640px;
+  max-width: 640px;
 }
 
 #intro a {
@@ -76,6 +76,9 @@ a:hover {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
 }
 
 .column {
@@ -93,6 +96,11 @@ a:hover {
   color: #424F5A;
   margin-bottom: 20px;
   padding: 10px;
+  -webkit-flex-grow: 2;
+  -ms-flex-positive: 2;
+  flex-grow: 2;
+  margin: 10px;
+  width: 460px;
 }
 
 .project .stars,
@@ -109,10 +117,39 @@ a:hover {
   margin: 0 0 10px;
 }
 
+.project .topBar {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.project .topBar .right {
+  margin-left: auto;
+}
+
+.project .keywords {
+  list-style-type: none;
+  margin: 0 0 -8px;
+  padding: 0;
+}
+
+.project .keywords li {
+  background: #ADBFCC;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0 5px 8px 0;
+  padding: 2px 4px;
+}
+
+.project .keywords .show-all {
+  background: none;
+}
+
 #colophon {
   background: #FFF;
   color: #424F5A;
-  height: 150px;
+  min-height: 150px;
   margin-top: 20px;
   text-align: center;
 }
@@ -126,4 +163,43 @@ a:hover {
   /* Set dimensions to half-size for hi-DPI screens. */
   height: 41.5px;
   width: 130px;
+}
+
+/* Recognized keyword colors */
+
+.project .keywords li[data-keyword="python"] {
+  background: #3771A3;
+  color: #FFF;
+}
+
+.project .keywords li[data-keyword="less-css"] {
+  background: #1D365D;
+  color: #FFF;
+}
+
+.project .keywords li[data-keyword="django"] {
+  background: #103E2E;
+  color: #FFF;
+}
+
+.project .keywords li[data-keyword="html"],
+.project .keywords li[data-keyword="html5"] {
+  background: #F06529;
+  color: #FFF;
+}
+
+.project .keywords li[data-keyword="javascript"] {
+  background: #F0DB4F;
+  color: #323330;
+}
+
+.project .keywords li[data-keyword="node"],
+.project .keywords li[data-keyword="nodejs"] {
+  background: #333333;
+  color: #7FBD42;
+}
+
+.project .keywords li[data-keyword="css"] {
+  background: #33A9DC;
+  color: #FFF;
 }
