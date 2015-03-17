@@ -146,6 +146,30 @@ a:hover {
   background: none;
 }
 
+.simple-pagination ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px;
+}
+
+.simple-pagination li {
+  background: linear-gradient(#EAEFF2, #D4DDE4);
+  color: #424F5A;
+  display: inline-block;
+  padding: 0;
+  margin-right: 5px;
+}
+
+.simple-pagination li span,
+.simple-pagination li a {
+  padding: 10px;
+  line-height: 26px;
+}
+
+.simple-pagination li a {
+  color: #0095DD;
+}
+
 #colophon {
   background: #FFF;
   color: #424F5A;
