@@ -1,6 +1,6 @@
 {% macro project_box(project) -%}
-  <div class="project">
-    <span class='topBar'>
+  <section class="project">
+    <header class='topBar'>
       {% if project.link %}
         <a href="{{ project.link }}"><h3>{{ project.name }}</h3></a>
       {% else %}
@@ -10,7 +10,7 @@
         <div class="stars"><i class="icon-star"></i> {{ project.github.stars or 0 }}</div>
         <div class="forks"><i class="icon-fork"></i> {{ project.github.forks or 0}}</div>
       </div>
-    </span>
+    </header>
 
     {% if project.description %}
       <p class="description">{{ project.description }}</p>
@@ -23,5 +23,5 @@
       {% endfor %}
       </ul>
     {% endif %}
-  </div>
+  </section>
 {%- endmacro %}

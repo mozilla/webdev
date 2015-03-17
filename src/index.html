@@ -22,14 +22,14 @@
         <h2>Building a better Web</h2>
         <p>Webdev is an informal group of Mozillians who develop websites and web services to further our <a href="https://www.mozilla.org/about/manifesto/">mission</a>.</p>
       </section>
-      <section id="projects">
+      <div id="projects">
         <h2>Projects</h2>
         <div class="columns">
           {% for project in projects %}
             {{ project_box(project) }}
           {% endfor %}
         </div>
-      </section>
+      </div>
     </div>
 
     <footer id="colophon">
