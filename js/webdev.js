@@ -33,7 +33,76 @@
         itemsOnPage: PAGE_SIZE,
         onPageClick: function (page) {
             var sliceStart = (page - 1) * PAGE_SIZE;
-            $projects.hide();
-            $projects.slice(sliceStart, sliceStart + PAGE_SIZE).show();
+            $projects.filter(".matched").hide().slice(sliceStart, sliceStart + PAGE_SIZE).show();
         } });
+
+    // Search projects
+    var $noResults = $("<p class=\"search-message\">No matching projects found.</p>");
+    var $search = $("\n        <label id=\"search\">\n          <span>Search query</span>\n          <input type=\"text\" placeholder=\"Search name, description, keywords...\">\n        </label>\n    ");
+    $search.insertBefore("#projects .columns");
+
+    var $query = $search.find("input");
+    $query.keyup(function (e) {
+        var query = $query.val().trim();
+        if (!query) {
+            $projects.addClass("matched"); // Empty queries match everything.
+        } else {
+            (function () {
+                // Hide everything and re-show if all terms match.
+                var terms = query.split(" ").filter(function (t) {
+                    return t != "";
+                });
+                $projects.removeClass("matched").each(function (_, project) {
+                    var $project = $(project);
+                    var _iteratorNormalCompletion = true;
+                    var _didIteratorError = false;
+                    var _iteratorError = undefined;
+
+                    try {
+                        for (var _iterator = terms[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                            var term = _step.value;
+
+                            if ($project.data("search").indexOf(term) === -1) {
+                                return;
+                            }
+                        }
+                    } catch (err) {
+                        _didIteratorError = true;
+                        _iteratorError = err;
+                    } finally {
+                        try {
+                            if (!_iteratorNormalCompletion && _iterator["return"]) {
+                                _iterator["return"]();
+                            }
+                        } finally {
+                            if (_didIteratorError) {
+                                throw _iteratorError;
+                            }
+                        }
+                    }
+
+                    $project.addClass("matched");
+                });
+            })();
+        }
+
+        // Show a "No results" message if nothing is matched, otherwise show the
+        // first page of results and update the pagination.
+        $projects.hide();
+        var $matchedProjects = $projects.filter(".matched");
+        if ($matchedProjects.length === 0) {
+            $paginator.hide();
+            $noResults.appendTo("#projects .columns");
+        } else {
+            $noResults.remove();
+            $matchedProjects.slice(0, PAGE_SIZE).show();
+            $paginator.show();
+            $paginator.pagination("updateItems", $matchedProjects.length);
+        }
+    });
+
+    // Clicking keywords adds them to the current search query.
+    $(".keywords li").click(function (e) {
+        $query.val($query.val() + " " + $(this).text()).keyup();
+    });
 })(jQuery);

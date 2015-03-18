@@ -72,6 +72,35 @@ a:hover {
   text-align: center;
 }
 
+#search {
+  display: block;
+  margin: 10px;
+}
+
+#search span {
+  position: absolute;
+  top: -999999em;
+  left: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+#search input {
+  background: #FFF;
+  border: 2px solid #CCC;
+  color: #000;
+  padding: 15px 15px 10px;
+  width: 100%;
+}
+
+.search-message {
+  font-size: 24px;
+  font-weight: 400;
+  margin: 20px auto;
+  max-width: 480px;
+}
+
 .columns {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -135,11 +164,16 @@ a:hover {
 
 .project .keywords li {
   background: #ADBFCC;
+  cursor: pointer;
   display: inline-block;
   font-size: 12px;
   font-weight: 600;
   margin: 0 5px 8px 0;
   padding: 2px 4px;
+}
+
+.project .keywords li:hover {
+  text-decoration: underline;
 }
 
 .project .keywords .show-all {
