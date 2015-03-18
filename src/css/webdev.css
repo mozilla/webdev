@@ -138,8 +138,10 @@ a:hover {
 .project {
     background: var(--project-background);
     color: var(--project-text-color);
+    display: flex;
     margin-bottom: 20px;
     padding: 10px;
+    flex-direction: column;
     flex-grow: 2;
     margin: 10px;
     width: 460px;
@@ -157,6 +159,7 @@ a:hover {
 
 .project p {
     margin: 0 0 10px;
+    flex: 2;
 }
 
 .project .topBar {
