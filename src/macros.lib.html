@@ -16,6 +16,14 @@
       <p class="description">{{ project.description }}</p>
     {% endif %}
 
+    {% if project.contributeJSON.participate.home %}
+      <p>
+        <a class="want-to-help" href="{{ project.contributeJSON.participate.home }}">
+          I want to help this project &raquo;
+        </a>
+      </p>
+    {% endif %}
+
     {% if project.contributeJSON.keywords %}
       <ul class="keywords">
       {% for keyword in project.contributeJSON.keywords|sort %}

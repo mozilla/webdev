@@ -13,6 +13,9 @@
     --project-text-color: #424F5A;
     --project-tag-background: #ADBFCC;
 
+    --want-to-help-background: #14C329;
+    --want-to-help-text-color: #FFF;
+
     --pagination-background: linear-gradient(#EAEFF2, #D4DDE4);
     --pagination-text-color: #424F5A;
     --pagination-link-color: #0095DD;
@@ -154,11 +157,16 @@ a:hover {
 }
 
 .project h3 {
-    margin: 0 0 10px;
+    margin: 0;
+    padding: 0 0 10px;
 }
 
 .project p {
-    margin: 0 0 10px;
+    margin: 0;
+    padding: 0 0 15px;
+}
+
+.project .description {
     flex: 2;
 }
 
@@ -168,6 +176,14 @@ a:hover {
 
 .project .topBar .right {
     margin-left: auto;
+}
+
+.want-to-help {
+    background: var(--want-to-help-background);
+    color: var(--want-to-help-text-color);
+    font-size: 16px;
+    font-weight: 400;
+    padding: 8px 14px 6px;
 }
 
 .project .keywords {
