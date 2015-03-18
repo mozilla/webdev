@@ -1,5 +1,5 @@
 {% macro project_box(project) -%}
-  <section class="project">
+  <section class="project" data-search="{{ project.searchData }}">
     <header class='topBar'>
       {% if project.link %}
         <a href="{{ project.link }}"><h3>{{ project.name }}</h3></a>

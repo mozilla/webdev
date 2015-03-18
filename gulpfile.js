@@ -310,45 +310,60 @@ function annotateProject(project, callback) {
         project.link = project.see_also[0];
     }
 
+    // If we have info about the Github repo, we can get the Github metadata as
+    // well as the contribute.json file.
     if (project.github) {
-        async.series([function(pcallback) {
-            github.repos.get({
-                user: project.github.user,
-                repo: project.github.repository,
-            }, function(err, result) {
-                if (err) {
-                    pcallback(err);
-                } else {
-                    project.github.description = result.description;
-                    project.description = result.description;
-                    project.github.stars = result.stargazers_count;
-                    project.github.forks = result.forks_count;
-                    pcallback();
-                }
-            });
-        }, function(pcallback) {
-            getContributeJSON(project, function(contributeJSON, error) {
-                if (error) {
-                    pcallback(error);
-                } else {
-                    project.contributeJSON = contributeJSON;
-                    project.description = contributeJSON.description || project.description;
-                    if (contributeJSON.keywords) {
-                        project.searchData = project.searchData.concat(
-                            contributeJSON.keywords);
-                    }
-
-                    pcallback();
-                }
-            });
-        }], function() {
+        async.series([
+            annotateProjectGithub.bind(null, project),
+            annotateProjectContributeJSON.bind(null, project),
+        ], function() {
             if (project.description) {
                 project.searchData.push(project.description);
             }
             project.searchData = project.searchData.join(',');
+
             callback();
         });
     } else {
         callback();
     }
+}
+
+/**
+ * Annotate a project with info from the Github API.
+ */
+function annotateProjectGithub(project, callback) {
+    github.repos.get({
+        user: project.github.user,
+        repo: project.github.repository,
+    }, function(err, result) {
+        if (err) {
+            callback(err, project);
+        } else {
+            project.github.description = result.description;
+            project.description = result.description;
+            project.github.stars = result.stargazers_count;
+            project.github.forks = result.forks_count;
+            callback(null, project);
+        }
+    });
+}
+
+/**
+ * Annotate a project with info from its contribute.json file.
+ */
+function annotateProjectContributeJSON(project, callback) {
+    getContributeJSON(project, function(contributeJSON, error) {
+        if (error) {
+            callback(error, project);
+        } else {
+            project.contributeJSON = contributeJSON;
+            project.description = contributeJSON.description || project.description;
+            if (contributeJSON.keywords) {
+                project.searchData = project.searchData.concat(contributeJSON.keywords);
+            }
+
+            callback(null, project);
+        }
+    });
 }

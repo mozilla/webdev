@@ -5,6 +5,10 @@
                                   #00549E 0px, transparent 100%)
                   #1E1E21;
 
+    --filter-background: #FFF;
+    --filter-text-color: #000;
+    --filter-border: 2px solid #CCC;
+
     --project-background: linear-gradient(#EAEFF2, #D4DDE4);
     --project-text-color: #424F5A;
     --project-tag-background: #ADBFCC;
@@ -89,6 +93,35 @@ a:hover {
     text-align: center;
 }
 
+#search {
+    display: block;
+    margin: 10px;
+}
+
+#search span {
+    position: absolute;
+    top: -999999em;
+    left: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+#search input {
+    background: var(--filter-background);
+    border: var(--filter-border);
+    color: var(--filter-text-color);
+    padding: 15px 15px 10px;
+    width: 100%;
+}
+
+.search-message {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 20px auto;
+    max-width: 480px;
+}
+
 .columns {
     display: flex;
     flex-flow: row wrap;
@@ -142,11 +175,16 @@ a:hover {
 
 .project .keywords li {
     background: var(--project-tag-background);
+    cursor: pointer;
     display: inline-block;
     font-size: 12px;
     font-weight: 600;
     margin: 0 5px 8px 0;
     padding: 2px 4px;
+}
+
+.project .keywords li:hover {
+    text-decoration: underline;
 }
 
 .project .keywords .show-all {
