@@ -19,7 +19,7 @@
     {% if project.contributeJSON.keywords %}
       <ul class="keywords">
       {% for keyword in project.contributeJSON.keywords|sort %}
-        <li data-keyword="{{ keyword }}">{{ keyword }}</li>
+        <li class="keyword" data-keyword="{{ keyword }}">{{ keyword }}</li>
       {% endfor %}
       </ul>
     {% endif %}
