@@ -111,7 +111,7 @@ gulp.task('build.templates', ['build.projectdata'], function() {
         projects: githubProjects,
         thisYear: new Date().getFullYear(),
     };
-    return gulp.src('./src/**/!(*.lib).html')
+    return gulp.src('./src/index.html')
         .pipe(plumber())
         .pipe(nunjucksRender(ctx))
         .pipe(gulp.dest('./build'));
@@ -121,7 +121,10 @@ gulp.task('build.templates', ['build.projectdata'], function() {
  * Copy other files over to the build directory.
  */
 gulp.task('build.static', function() {
-    return gulp.src('./src/**/!(*.html|*.css|*.js)')
+    return gulp.src(['./src/font/**/*',
+                     './src/img/**/*',
+                     './src/js/lib/**/*'],
+                    {base: './src'})
         .pipe(gulp.dest('./build'));
 });
 
@@ -129,20 +132,20 @@ gulp.task('build.static', function() {
  * Build CSS files by running them through myth.
  */
 gulp.task('build.css', function() {
-    return gulp.src('./src/**/*.css')
+    return gulp.src('./src/css/*.css')
         .pipe(plumber())
         .pipe(myth())
-        .pipe(gulp.dest('./build'));
+        .pipe(gulp.dest('./build/css'));
 });
 
 /**
  * Build JS files by running them through Babel.
  */
 gulp.task('build.js', function() {
-    return gulp.src('./src/**/*.js')
+    return gulp.src('./src/js/*.js')
         .pipe(plumber())
         .pipe(babel())
-        .pipe(gulp.dest('./build'));
+        .pipe(gulp.dest('./build/js'));
 });
 
 /**
@@ -300,6 +303,7 @@ function loadProjects() {
  * Github API.
  */
 function annotateProject(project, callback) {
+    project.searchData = [project.name];
     if (project.repos) {
         project.link = project.repos[0];
     } else if (project.see_also) {
@@ -329,10 +333,19 @@ function annotateProject(project, callback) {
                 } else {
                     project.contributeJSON = contributeJSON;
                     project.description = contributeJSON.description || project.description;
+                    if (contributeJSON.keywords) {
+                        project.searchData = project.searchData.concat(
+                            contributeJSON.keywords);
+                    }
+
                     pcallback();
                 }
             });
         }], function() {
+            if (project.description) {
+                project.searchData.push(project.description);
+            }
+            project.searchData = project.searchData.join(',');
             callback();
         });
     } else {
