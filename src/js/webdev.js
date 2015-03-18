@@ -22,6 +22,7 @@
 
     // Paginate project list.
     let $projects = $('.project');
+    $projects.addClass('matched'); // So pagination works before first search.
     $projects.slice(PAGE_SIZE).hide();
 
     let $paginator = $('<div></div>');
