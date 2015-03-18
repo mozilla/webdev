@@ -123,8 +123,14 @@ a:hover {
 .project {
   background: linear-gradient(#EAEFF2, #D4DDE4);
   color: #424F5A;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   margin-bottom: 20px;
   padding: 10px;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-flex-grow: 2;
   -ms-flex-positive: 2;
   flex-grow: 2;
@@ -144,6 +150,9 @@ a:hover {
 
 .project p {
   margin: 0 0 10px;
+  -webkit-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
 }
 
 .project .topBar {
