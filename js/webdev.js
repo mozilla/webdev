@@ -102,7 +102,7 @@
     });
 
     // Clicking keywords adds them to the current search query.
-    $(".keywords li").click(function (e) {
+    $(".keyword").click(function (e) {
         $query.val($query.val() + " " + $(this).text()).keyup();
     });
 })(jQuery);
