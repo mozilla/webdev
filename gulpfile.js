@@ -6,6 +6,7 @@ var deploy = require('gulp-gh-pages');
 var dotenv = require('dotenv');
 var fs = require('fs');
 var GitHubApi = require("github");
+var gitRev = require('git-rev');
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var jsonschema = require('jsonschema');
@@ -160,9 +161,14 @@ gulp.task('clean', function(cb) {
 /**
  * Build the site, commit it to the gh-pages branch, and push to origin.
  */
-gulp.task('deploy', ['build'], function() {
-    return gulp.src('./build/**/*')
-        .pipe(deploy());
+gulp.task('deploy', ['build'], function(cb) {
+    gitRev.long(function(rev) {
+        gulp.src('./build/**/*')
+        .pipe(deploy({
+            message: 'Building from commit ' + rev,
+        }))
+        .on('end', cb);
+    });
 });
 
 /**
