@@ -111,6 +111,7 @@ gulp.task('build.templates', ['build.projectdata'], function() {
     var ctx = {
         projects: githubProjects,
         thisYear: new Date().getFullYear(),
+        now: new Date(),
     };
     return gulp.src('./src/index.html')
         .pipe(plumber())
