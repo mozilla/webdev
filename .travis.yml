@@ -2,8 +2,8 @@ language: node_js
 node_js:
 - stable
 before_script:
-- git config user.email "travis@travis-ci.org"
-- git config user.name "TravisCI Automated Build"
+- git config --global user.email "travis@travis-ci.org"
+- git config --global user.name "TravisCI Automated Build"
 - npm install -g gulp
 - gulp clean
 script: gulp deploy --force
