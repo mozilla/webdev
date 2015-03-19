@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- stable
+before_script:
+- npm install -g gulp
+- gulp clean
+script: gulp deploy --force
+env:
+  global:
+  - secure: Nrk9anKoHUEs+SChvZ7GFoBl/6db97/NrkOAR9FDUwyfzrNXrc5NFC7ajfODg+US3jGpaMVhu7ZdxdrbiRvD+mwWzJETqNGCS73aY8Y5qbbzaO9EJi6fPJ39xKiIyh8D34wL6hRrtxLAivYVTEPCGJB2YdpVbMIfC5AoA/f7xio=
+  - secure: IdJ+W6RaraYD85qeJPDXl3FHKCPm6PmJUaDyOePpZXdmksvP5w/wrxn4Vzd4xCVmbj8+AJCz6fyfQ6EXTYO+BWoRzE0w+JDgItnR9QoiGpwhqTmwiYehss/R9HokSFmZJAl9OLxNPIre6rFw/dbtLxIcp7EHo96D4+vH0C965d8=
