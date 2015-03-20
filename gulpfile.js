@@ -327,7 +327,7 @@ function annotateProject(project, callback) {
             if (project.description) {
                 project.searchData.push(project.description);
             }
-            project.searchData = project.searchData.join(',');
+            project.searchData = project.searchData.join(',').toLowerCase();
 
             callback();
         });

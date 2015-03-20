@@ -56,7 +56,7 @@
             $projects.addClass('matched'); // Empty queries match everything.
         } else {
             // Hide everything and re-show if all terms match.
-            let terms = query.split(' ').filter(t => t != '');
+            let terms = query.toLowerCase().split(' ').filter(t => t != '');
             $projects
                 .removeClass('matched')
                 .each((_, project) => {
