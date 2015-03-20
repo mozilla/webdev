@@ -50,7 +50,7 @@
         } else {
             (function () {
                 // Hide everything and re-show if all terms match.
-                var terms = query.split(" ").filter(function (t) {
+                var terms = query.toLowerCase().split(" ").filter(function (t) {
                     return t != "";
                 });
                 $projects.removeClass("matched").each(function (_, project) {
