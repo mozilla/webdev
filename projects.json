@@ -517,7 +517,7 @@
                 "user": "mozilla-services",
                 "repository": "hawkauthlib"
             }
-        },
+        }
     ],
     "apps": [
         {
@@ -539,7 +539,7 @@
                 "user": "mozilla-services",
                 "repository": "readinglist-client"
             }
-        },
+        }
         
     ],
     "other": [
@@ -672,6 +672,6 @@
                 "user": "mozilla-services",
                 "repository": "vaurien"
             }
-        },
+        }
     ]
 }
