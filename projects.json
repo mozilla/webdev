@@ -437,6 +437,96 @@
                 "user": "mozilla",
                 "repository": "localforage"
             }
+        },
+        {
+            "name": "django-session-csrf",
+            "repos": [
+                "https://github.com/mozilla/django-session-csrf"
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "django-session-csrf"
+            }
+        },
+        {
+            "name": "cliquet",
+            "repos": [
+                "https://github.com/mozilla-services/cliquet"
+            ],
+            "github": {
+                "user": "mozilla-services",
+                "repository": "cliquet"
+            }
+        },
+        {
+            "name": "cornice",
+            "repos": [
+                "https://github.com/mozilla-services/cornice"
+            ],
+            "github": {
+                "user": "mozilla-services",
+                "repository": "cornice"
+            }
+        },
+        {
+            "name": "requests-hawk",
+            "repos": [
+                "https://github.com/mozilla-services/requests-hawk"
+            ],
+            "github": {
+                "user": "mozilla-services",
+                "repository": "requests-hawk"
+            }
+        },
+        {
+            "name": "konfig",
+            "repos": [
+                "https://github.com/mozilla-services/konfig"
+            ],
+            "github": {
+                "user": "mozilla-services",
+                "repository": "konfig"
+            }
+        },
+        {
+            "name": "pyramid-hawkauth",
+            "repos": [
+                "https://github.com/mozilla-services/pyramid-hawkauth"
+            ],
+            "github": {
+                "user": "mozilla-services",
+                "repository": "pyramid-hawkauth"
+            }
+        },
+        {
+            "name": "tokenlib",
+            "repos": [
+                "https://github.com/mozilla-services/tokenlib"
+            ],
+            "github": {
+                "user": "mozilla-services",
+                "repository": "tokenlib"
+            }
+        },
+        {
+            "name": "pyramid_multiauth",
+            "repos": [
+                "https://github.com/mozilla-services/pyramid_multiauth"
+            ],
+            "github": {
+                "user": "mozilla-services",
+                "repository": "pyramid_multiauth"
+            }
+        },
+        {
+            "name": "hawkauthlib",
+            "repos": [
+                "https://github.com/mozilla-services/hawkauthlib"
+            ],
+            "github": {
+                "user": "mozilla-services",
+                "repository": "hawkauthlib"
+            }
         }
     ],
     "apps": [
@@ -448,6 +538,16 @@
             "github": {
                 "user": "mozilla",
                 "repository": "buddyup"
+            }
+        },
+        {
+            "name": "readinglist-client",
+            "repos": [
+                "https://github.com/mozilla-services/readinglist-client"
+            ],
+            "github": {
+                "user": "mozilla-services",
+                "repository": "readinglist-client"
             }
         }
     ],
@@ -480,6 +580,106 @@
             "github": {
                 "user": "MozillaFoundation",
                 "repository": "mofo-example-app"
+            }
+        },
+        {
+            "name": "heka",
+            "repos": [
+                "https://github.com/mozilla-services/heka"
+            ],
+            "github": {
+                "user": "mozilla-services",
+                "repository": "heka"
+            }
+        },
+        {
+            "name": "autopush",
+            "repos": [
+                "https://github.com/mozilla-services/autopush"
+            ],
+            "github": {
+                "user": "mozilla-services",
+                "repository": "autopush"
+            }
+        },
+        {
+            "name": "loop-server",
+            "repos": [
+                "https://github.com/mozilla-services/loop-server"
+            ],
+            "github": {
+                "user": "mozilla-services",
+                "repository": "loop-server"
+            }
+        },
+        {
+            "name": "readinglist",
+            "repos": [
+                "https://github.com/mozilla-services/readinglist"
+            ],
+            "github": {
+                "user": "mozilla-services",
+                "repository": "readinglist"
+            }
+        },
+        {
+            "name": "kinto",
+            "repos": [
+                "https://github.com/mozilla-services/kinto"
+            ],
+            "github": {
+                "user": "mozilla-services",
+                "repository": "kinto"
+            }
+        },
+        {
+            "name": "tokenserver",
+            "repos": [
+                "https://github.com/mozilla-services/tokenserver"
+            ],
+            "github": {
+                "user": "mozilla-services",
+                "repository": "tokenserver"
+            }
+        },
+        {
+            "name": "loads",
+            "repos": [
+                "https://github.com/mozilla-services/loads"
+            ],
+            "github": {
+                "user": "mozilla-services",
+                "repository": "loads"
+            }
+        },
+        {
+            "name": "syncserver",
+            "repos": [
+                "https://github.com/mozilla-services/syncserver"
+            ],
+            "github": {
+                "user": "mozilla-services",
+                "repository": "syncserver"
+            }
+        },
+        {
+            "name": "msisdn-gateway",
+            "repos": [
+                "https://github.com/mozilla-services/msisdn-gateway"
+            ],
+            "github": {
+                "user": "mozilla-services",
+                "repository": "msisdn-gateway"
+            }
+        },
+        {
+            "name": "vaurien",
+            "repos": [
+                "https://github.com/mozilla-services/vaurien"
+            ],
+            "github": {
+                "user": "mozilla-services",
+                "repository": "vaurien"
             }
         }
     ]
