@@ -427,6 +427,16 @@
                 "user": "mozilla",
                 "repository": "django-session-csrf"
             }
+        },
+        {
+            "name": "localForage",
+            "repos": [
+                "https://github.com/mozilla/localforage"
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "localforage"
+            }
         }
     ],
     "apps": [
