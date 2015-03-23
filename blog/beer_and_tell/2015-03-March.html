@@ -1,0 +1,41 @@
+<p>Once a month, web developers from across the Mozilla Project get together to design the most dangerous OSHA-compliant workstation possible. While searching for loopholes, we find time to talk about our side projects and drink, an occurrence we like to call "Beer and Tell".</p>
+
+<p>There's a <a href="https://wiki.mozilla.org/Webdev/Beer_And_Tell/March2015">wiki page available</a> with a list of the presenters, as well as links to their presentation materials. There's also a <a href="https://air.mozilla.org/webdev-beer-and-tell-march-2015/">recording available</a> courtesy of Air Mozilla.</p>
+
+<h2>Michael Kelly: dxr-cmd</h2>
+<p><a href="https://mozillians.org/u/Osmose/">A certain blog post author</a> was first with <a href="https://github.com/Osmose/dxr-cmd">dxr-cmd</a>, a command-line client for making queries to <a href="https://dxr.mozilla.org/">DXR</a>, Mozilla's source code browser. The tool is installed via <a href="https://pip.pypa.io/en/latest/">pip</a> and supports any query you can make via the web interface. Output can be run through a pager utility such as <a href="http://www.greenwoodsoftware.com/less/">less</a>, and you can also control the syntax highlighting applied to the output.</p>
+
+<h2>Daniel Maher: AudioAddict plugin for Plex</h2>
+<p>Next up was <a href="https://mozillians.org/u/phrawzty/">phrawzty</a>, who was not present but shared a link to <a href="https://github.com/phrawzty/AudioAddict.bundle">AudioAddict.bundle</a>, a <a href="https://plex.tv/">Plex</a> plugin that allows you to play music from <a href="http://www.audioaddict.com/">AudioAddict</a>-based services (such as <a href="http://www.radiotunes.com/">radiotunes.com</a>, <a href="http://www.di.fm/">di.fm</a>, and more).</p>
+
+<h2>Peter Bengtsson: Redunter</h2>
+<p><a href="https://mozillians.org/u/peterbe/">peterbe</a> shared <a href="https://github.com/peterbe/redunter">Redunter</a>, a web service that helps hunt down unused CSS on your website. By embedding a small snippet of JS into your page and browsing through your website, Redunter will analyze the HTML being rendered and compare it to the CSS being served. The end result is a list of CSS rules that did not match any HTML that was delivered to the user. Redunter even works with sites that modify the DOM by watching for mutation events and tracking the altered HTML.</p>
+
+<h2>Scott Michaud: GPU-Accelerated Audio</h2>
+<p><a href="https://mozillians.org/u/ScottMichaud/">ScottMichaud</a> returns with more fun stuff using the <a href="http://webcl.nokiaresearch.com/">WebCL extension</a>! Scott shared a <a href="http://scottmichaud.github.io/">demo</a> of <a href="https://github.com/ScottMichaud/WebCL-Positional-Audio">WebCL-powered audio</a> where a virtual microphone was surrounded by individual raindrop sounds. By controlling the rate of raindrops, you can simulate a higher audio load and see the difference that pushing audio processing to the GPU can make.</p>
+
+<h2>Les Orchard: Parsec Patrol</h2>
+<p>Senior Space Cadet <a href="https://mozillians.org/u/lmorchard/">lorchard</a> shared <a href="https://github.com/lmorchard/parsec-patrol">Parsec Patrol</a>, a vector-based space game for the web. While there's no full game made yet, there is <a href="http://lmorchard.github.io/parsec-patrol/sketches/">a webpage with several demos</a> showing collision detection, spaceship navigation, missiles, point-defense systems, and more!</p>
+
+<h2>Matthew Claypotch: a9r</h2>
+<p>Have you ever seen an abbreviation like l10n or i18n and had no idea what it meant? Have no fear, <a href="https://mozillians.org/u/potch/">Uncle Potch</a> is here with <a href="https://github.com/potch/a9r">a9r</a>, the answer to the abbreviation problem! Simply install the command and enter in an abbreviation to receive a list of all words in the <a href="http://en.wikipedia.org/wiki/SOWPODS">SOWPODS</a> word list that match. Got a word that you need to abbreviate? Not only can a9r decipher abbreviations, it can create them!</p>
+
+<h2>Matthew Claypotch: socketpeer</h2>
+<p>In a slightly-less-whimsical vein, potch also shared <a href="https://github.com/cvan/socketpeer">socketpeer</a>, a simple JavaScript library for 1:1 messaging via WebRTC Data Channels and WebSockets. Extracted from the <a href="https://github.com/Maksims/tanx">Tanx</a> demo that Mozilla showed at GDC 2015, socketpeer contains both a server API for establishing peer connections between users and a client API to handle the client-side communication. Potch also shared a <a href="http://socketpeer-test.herokuapp.com/">demo</a> of a <a href="https://github.com/potch/test-socketpeer">peer-to-peer chat application</a> using socketpeer.</p>
+
+<h2>Chris Van Wiemeersch: PhantomHAR</h2>
+<p>Next up was cvan, who shared <a href="https://github.com/cvan/phantomHAR">PhantomHAR</a>, a <a href="http://phantomjs.org/">PhantomJS</a> and <a href="http://slimerjs.org/">SlimerJS</a> script that generates an <a href="https://w3c.github.io/web-performance/specs/HAR/Overview.html">HTTP Archive</a> (or HAR) for a URL. A HAR is an archive of data about HTTP transactions that can be used to export detailed performance data for tools to consume and analyze, and PhantomHAR allows you to easily generate the HAR for use by these tools.</p>
+
+<h2>Chris Van Wiemeersch: fetch-manifest</h2>
+<p>Next, cvan shared <a href="https://github.com/cvan/fetch-manifest">fetch-manifest</a>, a small library that takes a URL, locates the <a href="http://w3c.github.io/manifest/">W3C web app manifest</a> for the page, fixes any relative URLs in the manifest, and returns it. This is useful for things like app marketplaces that want to allow people to submit web apps by submitting a single URL to the app they want to submit.</p>
+
+<h2>Bill Walker: robot-threejs</h2>
+<p>Last up was <a href="https://mozillians.org/u/bwalker/">bwalker</a>, who shared <a href="https://github.com/wfwalker/robot-threejs">robot-threejs</a>, an experimental steampunk robot game powered by three.js and WebGL. The game currently allows you to <a href="http://wfwalker.github.io/robot-threejs/">fly around a 3D environment</a> that has 3D positional audio emitting from an incredibly mysterious cube. CAN YOU SOLVE THE CUBE MYSTERY?</p>
+
+<hr />
+
+<p>This month we think we've really got something special with our Seki Edge keyboard-and-mouse combo. Order now and get a free box of Band-aids at no additional cost!</p>
+
+<p>If you're interested in attending the next Beer and Tell, sign up for the <a href="https://lists.mozilla.org/listinfo/dev-webdev">dev-webdev@lists.mozilla.org mailing list</a>. An email is sent out a week beforehand with connection details. You could even add yourself to the wiki and show off your side-project!</p>
+
+<p>See you next month!</p>
