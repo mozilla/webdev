@@ -681,6 +681,16 @@
                 "user": "mozilla-services",
                 "repository": "vaurien"
             }
+        },
+        {
+            "name": "ship-it",
+            "repos": [
+                "https://github.com/mozilla/ship-it"
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "ship-it"
+            }
         }
     ]
 }
