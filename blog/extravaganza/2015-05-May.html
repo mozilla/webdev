@@ -1,0 +1,41 @@
+<p>Once a month, web developers from across Mozilla get together to write fake Amazon reviews for cash on the side. While we sing the praises of shoddy products from questionable dealers, we find time to talk about the work that we've shipped, share the libraries we're working on, meet new folks, and talk about whatever else is on our minds. It's the Webdev Extravaganza! The meeting is open to the public; you should stop by!</p>
+
+<p>You can check out the <a href="https://wiki.mozilla.org/Webdev/Meetings/2015/May_5">wiki page</a> that we use to organize the meeting, or view a <a href="https://air.mozilla.org/webdev-extravaganza-may-2015/">recording of the meeting</a> in Air Mozilla. Or just read on for a summary!</p>
+
+<h2>Shipping Celebration</h2>
+<p>The shipping celebration is for anything we finished and deployed in the past month, whether it be a brand new site, an upgrade to an existing one, or even a release of a library.</p>
+
+<h3>DXR + Elasticsearch Staged</h3>
+<p><a href="https://mozillians.org/u/ErikRose/">ErikRose</a> himself was up first, and shared the news that the upcoming version of <a href="https://dxr.mozilla.org/">DXR</a>, which switches the site to using <a href="https://github.com/elastic/elasticsearch">Elasticsearch</a> to power its code-searching abilities, has been successfully deployed on its staging environment. A year in the making, the new version brings faster searches, parallel indexing, and support for multiple programming languages, such as Python.</p>
+
+<h3>Bedrock Free from the Clutches of Playdoh</h3>
+<p><a href="https://mozillians.org/u/jmize/">jgmize</a> shared the news that <a href="https://github.com/mozilla/bedrock/">Bedrock</a>, the codebase for the main <a href="https://www.mozilla.org">mozilla.org</a> website, has been successfully divorced from <a href="https://github.com/mozilla/playdoh">Playdoh</a>, including removing funfactory as a dependency and removing the reliance on git submodules for managing dependencies. Bedrock now uses <a href="https://github.com/erikrose/peep/">peep</a> to install dependencies on production.</p>
+
+<h2>Open-source Citizenship</h2>
+<p>Here we talk about libraries we're maintaining and what, if anything, we need help with for them.</p>
+
+<h3>django-browserid 1.0 Released</h3>
+<p><a href="https://mozillians.org/u/Osmose/">Osmose</a> (that's me!) announced the <a href="https://github.com/mozilla/django-browserid/releases/tag/v1.0.0">1.0 release of django-browserid</a>, which mainly adds Django 1.8 support while removing support for older, unsupported versions of Django. Also, as the software is now 1.0, any backwards-incompatible changes will bump the version number as per the rules of <a href="http://semver.org/">Semantic Versioning</a>.</p>
+
+<h3>pyelasticsearch 1.2.3 Released</h3>
+<p>Next up was ErikRose and his announcement of the release of <a href="http://pyelasticsearch.readthedocs.org/en/latest/">pyelasticsearch 1.2.3</a>, an API for interacting with elasticsearch. The release fixes a bug that caused doctype names to sometimes be treated as index names when <code>_all</code> was used.</p>
+
+<h3>Peep 2.3, 2.4, 2.4.1 Released</h3>
+<p>ErikRose also informed us about several <a href="https://github.com/erikrose/peep/">peep</a> releases. peep, which is a wrapper around <a href="https://pip.pypa.io/">pip</a> that cryptographically verifies packages installed from a requirements file, is now compatible with pip 6.1.x, supports pip command-line flags in requirements files, and passes flake8.</p>
+
+<h3>django-tidings in the Mozilla Github Organization</h3>
+<p>The last bit of news ErikRose had to share was about <a href="https://github.com/mozilla/django-tidings">django-tidings</a>, a library for sending emails to users in response to events on your site. The project is now part of the Mozilla Github organization, and <a href="https://mozillians.org/u/jezdez/">jezdez</a> has been added as a maintainer.</p>
+
+<h2>Roundtable</h2>
+<p>The Roundtable is the home for discussions that don't fit anywhere else.</p>
+
+<h3>Firefox Developer Edition 40</h3>
+<p>canuckistani stopped by to mention some of the exciting DevTools features coming to Firefox Developer Edition, including a new performance tool, breakpoints in unnamed eval scripts, recording networks requests before the Network Tab is opened, and more! Check out <a href="https://etherpad.mozilla.org/devtools-40">the etherpad</a> for tracking new features as well as for finding links to what bugs could use some help!</p>
+
+<hr />
+
+<p>If you are a fine purveyor of shoddy products and want to energize your marketing efforts with a grassroots campaign conveyed via customer reviews, give us a call! Our rates are very unreasonable!</p>
+
+<p>If you're interested in web development at Mozilla, or want to attend next month's Extravaganza, subscribe to the <a href="https://lists.mozilla.org/listinfo/dev-webdev">dev-webdev@lists.mozilla.org mailing list</a> to be notified of the next meeting, and maybe send a message introducing yourself. We'd love to meet you!</p>
+
+<p>See you next month!</p>
