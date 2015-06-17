@@ -257,8 +257,12 @@ function getContributeJSON(project, callback) {
         } else if (response.statusCode != 200) {
             callback(null, 'Bad response code: ' + response.statusCode);
         } else {
-            var contributeJSON = JSON.parse(body);
-            callback(contributeJSON, null);
+            try {
+                var contributeJSON = JSON.parse(body);
+                callback(contributeJSON, null);
+            } catch (error) {
+                callback(null, 'Error parsing contribute.json: ' + error);
+            }
         }
     });
 }
