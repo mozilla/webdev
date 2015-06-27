@@ -1,12 +1,14 @@
 # Mozilla Webdev Tools and Pages
 
-This repo serves two purposes:
+This repo serves several purposes:
 
 1. Contains code for building and deploying the gh-pages branch behind
    http://mozilla.github.io/webdev/.
 2. Contains small tools that are useful for the [Mozilla Webdev][] group.
+3. Contains the markdown source of blogs on the [Webdev Blog][]
 
 [Mozilla Webdev]: http://mozweb.readthedocs.org/en/latest/guide/webdev.html
+[Webdev Blog]: https://blog.mozilla.org/webdev/
 
 ## Developer Setup
 
