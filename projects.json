@@ -549,6 +549,16 @@
                 "user": "mozilla-services",
                 "repository": "readinglist-client"
             }
+        },
+        {
+            "name": "pontoon",
+            "repos": [
+                "https://github.com/mozilla/pontoon"
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "pontoon"
+            }
         }
     ],
     "other": [
