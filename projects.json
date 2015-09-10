@@ -701,6 +701,16 @@
                 "user": "mozilla",
                 "repository": "ship-it"
             }
+        },
+        {
+            "name": "relengapi",
+            "repos": [
+                "https://github.com/mozilla/build-relengapi"
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "build-relengapi"
+            }
         }
     ]
 }
