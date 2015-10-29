@@ -527,6 +527,16 @@
                 "user": "mozilla-services",
                 "repository": "hawkauthlib"
             }
+        },
+        {
+            "name": "metrics-graphics",
+            "repos": [
+                "https://github.com/mozilla/metrics-graphics"
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "metrics-graphics"
+            }
         }
     ],
     "apps": [
