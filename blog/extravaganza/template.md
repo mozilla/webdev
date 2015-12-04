@@ -8,6 +8,9 @@ You can check out the [wiki page][wiki] that we use to organize the meeting, or
 view a [recording of the meeting][recording] in Air Mozilla. Or just read on for
 a summary!
 
+[wiki]:
+[recording]:
+
 ## Shipping Celebration
 The shipping celebration is for anything we finished and deployed in the past
 month, whether it be a brand new site, an upgrade to an existing one, or even a
@@ -40,6 +43,4 @@ you!
 
 See you next month!
 
-[wiki]: https://wiki.mozilla.org/Webdev/Meetings/2015/March_3
-[recording]: https://air.mozilla.org/webdev-extravaganza-march-2015/
 [mailing-list]: https://lists.mozilla.org/listinfo/dev-webdev
