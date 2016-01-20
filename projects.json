@@ -643,12 +643,12 @@
             }
         },
         {
-            "name": "kinto",
+            "name": "Kinto - A database for the Web",
             "repos": [
-                "https://github.com/mozilla-services/kinto"
+                "https://github.com/kinto/kinto"
             ],
             "github": {
-                "user": "mozilla-services",
+                "user": "kinto",
                 "repository": "kinto"
             }
         },
