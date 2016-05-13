@@ -104,17 +104,14 @@ a:hover {
 
 .columns {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-flow: row wrap;
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
 }
 
 .column {
   -webkit-box-flex: 1;
-  -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
@@ -128,18 +125,15 @@ a:hover {
   background: linear-gradient(#EAEFF2, #D4DDE4);
   color: #424F5A;
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   margin-bottom: 20px;
   padding: 10px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
   -webkit-box-flex: 2;
-  -webkit-flex-grow: 2;
   -ms-flex-positive: 2;
   flex-grow: 2;
   margin: 10px;
@@ -164,14 +158,12 @@ a:hover {
 
 .project .description {
   -webkit-box-flex: 2;
-  -webkit-flex: 2;
   -ms-flex: 2;
   flex: 2;
 }
 
 .project .topBar {
   display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
