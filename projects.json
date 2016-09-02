@@ -431,10 +431,10 @@
         {
             "name": "localForage",
             "repos": [
-                "https://github.com/mozilla/localforage"
+                "https://github.com/localForage/localForage"
             ],
             "github": {
-                "user": "mozilla",
+                "user": "localForage",
                 "repository": "localforage"
             }
         },
