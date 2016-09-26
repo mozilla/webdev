@@ -273,6 +273,17 @@
                 "user": "mozilla",
                 "repository": "peekaboo"
             }
+        },
+        {
+            "name": "www.standu.ps",
+            "repos": [
+                "https://github.com/mozilla/standup",
+                "https://github.com/mozilla/standup-irc"
+            ],
+            "github": {
+                "user": "mozilla",
+                "repository": "standup"
+            }
         }
     ],
     "libraries": [
