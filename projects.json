@@ -195,7 +195,7 @@
             }
         },
         {
-            "name": "contribute.paas.allizom.org",
+            "name": "www.contributejson.org",
             "repos": [
                 "https://github.com/mozilla/contribute.json"
             ],
