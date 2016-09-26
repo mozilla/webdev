@@ -225,16 +225,6 @@
             }
         },
         {
-            "name": "scrumbu.gs",
-            "repos": [
-                "https://github.com/mozilla/scrumbugz"
-            ],
-            "github": {
-                "user": "mozilla",
-                "repository": "scrumbugz"
-            }
-        },
-        {
             "name": "location.services.mozilla.com",
             "repos": [
                 "https://github.com/mozilla/ichnaea"
