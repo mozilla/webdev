@@ -82,4 +82,4 @@ validate them. Currently only supports repos hosted on Github.
 
 ## License
 
-Licensed under the Apache 2.0 License. For details, see the `LICENSE` file.
+Licensed under the Apache 2.0 License. For details, see the [`LICENSE`](./LICENSE) file.
