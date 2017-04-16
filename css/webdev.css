@@ -3,7 +3,6 @@
 }
 
 body {
-  background: -webkit-radial-gradient(ellipse farthest-side at left top, #00549E 0px, transparent 100%) #1E1E21 no-repeat;
   background: radial-gradient(ellipse farthest-side at left top,
                                   #00549E 0px, transparent 100%)
                   #1E1E21 no-repeat;
@@ -121,7 +120,6 @@ a:hover {
 }
 
 .project {
-  background: -webkit-linear-gradient(#EAEFF2, #D4DDE4);
   background: linear-gradient(#EAEFF2, #D4DDE4);
   color: #424F5A;
   display: -webkit-box;
@@ -211,7 +209,6 @@ a:hover {
 }
 
 .simple-pagination li {
-  background: -webkit-linear-gradient(#EAEFF2, #D4DDE4);
   background: linear-gradient(#EAEFF2, #D4DDE4);
   color: #424F5A;
   display: inline-block;
