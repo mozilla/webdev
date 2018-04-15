@@ -3,10 +3,10 @@
 This repo serves several purposes:
 
 1. Contains code for building and deploying the gh-pages branch behind
-   http://mozilla.github.io/webdev/.
+   https://mozilla.github.io/webdev/.
 2. Contains small tools that are useful for the [Mozilla Webdev][] group.
 
-[Mozilla Webdev]: http://mozweb.readthedocs.org/en/latest/guide/webdev.html
+[Mozilla Webdev]: https://mozweb.readthedocs.org/en/latest/guide/webdev.html
 
 ## Developer Setup
 
@@ -36,7 +36,7 @@ These steps assume you have [Node.js][] installed.
    GITHUB_PASSWORD=some_personal_access_token
    ```
 
-[Node.js]: http://nodejs.org/
+[Node.js]: https://nodejs.org/
 [Personal Access Token]: https://github.com/settings/applications
 
 ## projects.json
@@ -66,7 +66,7 @@ data.
 Note that it's very easy to hit API limits if you haven't
 [added your credentials to a .env file](#user-content-dotenv).
 
-[Nunjucks]: http://mozilla.github.io/nunjucks/
+[Nunjucks]: https://mozilla.github.io/nunjucks/
 
 ### `gulp deploy`
 
