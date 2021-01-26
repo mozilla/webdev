@@ -41,28 +41,32 @@ if (process.env.GITHUB_USERNAME && process.env.GITHUB_PASSWORD) {
  * Run a local development server. The site is re-generated
  * automatically when changes are made.
  */
-gulp.task('serve', ['build'], function() {
-    var watcher = gulp.watch('./src/**/*', ['build']);
-    watcher.on('change', function(event) {
-        gutil.log(gutil.colors.cyan('Change detected, rebuilding.'));
-    });
+gulp.task('serve', done => {
+    gulp.series('build', () => {
+        var watcher = gulp.watch('./src/**/*', ['build']);
+        watcher.on('change', function (event) {
+            gutil.log(gutil.colors.cyan('Change detected, rebuilding.'));
+        });
 
-    // Wish I had a better way of doing this.
-    return serve({
-        root: 'build',
-        port: 8000,
-    })();
+        // Wish I had a better way of doing this.
+        return serve({
+            root: 'build',
+            port: 8000,
+        })();
+    })
+    done();
 });
 
 /**
  * Build a projects.json file annotated with data pulled from Github and other
  * sources.
  */
-gulp.task('build.projectdata', function(callback) {
+gulp.task('build.projectdata', callback => {
     // Ensure the build directory exists.
     try {
         fs.mkdirSync('build');
-    } catch (err) {}
+    } catch (err) {
+    }
 
     // If the list has been updated in the past 24 hours, don't bother updating.
     // Unless we're being forced to, that is.
@@ -84,7 +88,7 @@ gulp.task('build.projectdata', function(callback) {
     projects.lastUpdated = Date.now();
 
     // Annnotate the projects with extra data and s
-    async.each(allProjects(projects), annotateProject, function(err) {
+    async.each(allProjects(projects), annotateProject, function (err) {
         if (err) {
             console.error('Error annotating projects.');
             console.error(err);
@@ -99,41 +103,46 @@ gulp.task('build.projectdata', function(callback) {
 /**
  * Build HTML files by running them through nunjucks.
  */
-gulp.task('build.templates', ['build.projectdata'], function() {
-    nunjucksRender.nunjucks.configure(['src']);
+gulp.task('build.templates', done => {
+    gulp.series('build.projectdata', () => {
+        nunjucksRender.nunjucks.configure(['src']);
 
-    var projects = JSON.parse(fs.readFileSync('build/projects.json'));
-    var githubProjects = allProjects(projects, function(p) {return p.github;});
-    githubProjects.sort(function(a, b) {
-        return b.github.stars - a.github.stars;
-    });
+        var projects = JSON.parse(fs.readFileSync('build/projects.json'));
+        var githubProjects = allProjects(projects, function (p) {
+            return p.github;
+        });
+        githubProjects.sort(function (a, b) {
+            return b.github.stars - a.github.stars;
+        });
 
-    var ctx = {
-        projects: githubProjects,
-        thisYear: new Date().getFullYear(),
-        now: new Date(),
-    };
-    return gulp.src('./src/index.html')
-        .pipe(plumber())
-        .pipe(nunjucksRender(ctx))
-        .pipe(gulp.dest('./build'));
+        var ctx = {
+            projects: githubProjects,
+            thisYear: new Date().getFullYear(),
+            now: new Date(),
+        };
+        return gulp.src('./src/index.html')
+            .pipe(plumber())
+            .pipe(nunjucksRender(ctx))
+            .pipe(gulp.dest('./build'));
+    })
+    done();
 });
 
 /**
  * Copy other files over to the build directory.
  */
-gulp.task('build.static', function() {
+gulp.task('build.static', () => {
     return gulp.src(['./src/font/**/*',
-                     './src/img/**/*',
-                     './src/js/lib/**/*'],
-                    {base: './src'})
+            './src/img/**/*',
+            './src/js/lib/**/*'],
+        {base: './src'})
         .pipe(gulp.dest('./build'));
 });
 
 /**
  * Build CSS files by running them through myth.
  */
-gulp.task('build.css', function() {
+gulp.task('build.css', () => {
     return gulp.src('./src/css/*.css')
         .pipe(plumber())
         .pipe(myth())
@@ -143,7 +152,7 @@ gulp.task('build.css', function() {
 /**
  * Build JS files by running them through Babel.
  */
-gulp.task('build.js', function() {
+gulp.task('build.js', () => {
     return gulp.src('./src/js/*.js')
         .pipe(plumber())
         .pipe(babel())
@@ -153,30 +162,37 @@ gulp.task('build.js', function() {
 /**
  * Full build of the static site.
  */
-gulp.task('build', ['build.templates', 'build.css', 'build.js', 'build.static']);
+gulp.task('build', done => {
+    gulp.series('build.templates', 'build.css', 'build.js', 'build.static')
+    done();
+});
 
-gulp.task('clean', function(cb) {
+
+gulp.task('clean', cb => {
     del('build/**/*', cb);
 });
 
 /**
  * Build the site, commit it to the gh-pages branch, and push to origin.
  */
-gulp.task('deploy', ['build'], function(cb) {
-    gitRev.long(function(rev) {
-        gulp.src('./build/**/*')
-        .pipe(deploy({
-            message: 'Building from commit ' + rev,
-        }))
-        .on('end', cb);
-    });
+gulp.task('deploy', done => {
+    gulp.series('build', (cb) => {
+        gitRev.long(function (rev) {
+            gulp.src('./build/**/*')
+                .pipe(deploy({
+                    message: 'Building from commit ' + rev,
+                }))
+                .on('end', cb);
+        });
+    })
+    done();
 });
 
 /**
  * Download and validate contribute.json files for all the projects in
  * projects.json.
  */
-gulp.task('validate_contribute_json', function(gulpCallback) {
+gulp.task('validate_contribute_json',  gulpCallback=> {
     var projects = allProjects(loadProjects());
     var bar = new ProgressBar(':bar', {total: projects.length});
     var passed = [];
@@ -184,18 +200,18 @@ gulp.task('validate_contribute_json', function(gulpCallback) {
     var skipped = [];
 
     // Sort projects by name.
-    projects.sort(function(a, b) {
+    projects.sort(function (a, b) {
         return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
     });
 
-    async.each(projects, function(project, eachCallback) {
+    async.each(projects, function (project, eachCallback) {
         if (!project.github) {
             skipped.push({project: project, reason: 'No Github repo.'});
             bar.tick();
             return eachCallback();
         }
 
-        getContributeJSON(project, function(contributeJSON, error) {
+        getContributeJSON(project, function (contributeJSON, error) {
             if (error) {
                 failed.push({
                     project: project,
@@ -204,7 +220,7 @@ gulp.task('validate_contribute_json', function(gulpCallback) {
                 bar.tick();
                 eachCallback();
             } else {
-                validateContributeJSON(contributeJSON, function(result) {
+                validateContributeJSON(contributeJSON, function (result) {
                     if (result.errors.length > 0) {
                         failed.push({
                             project: project,
@@ -221,14 +237,14 @@ gulp.task('validate_contribute_json', function(gulpCallback) {
                 });
             }
         });
-    }, function() {
+    }, function () {
         gutil.log(gutil.colors.green('== Passed =='));
-        passed.forEach(function(project) {
+        passed.forEach(function (project) {
             gutil.log('  ' + gutil.colors.underline(project.name));
         });
 
         gutil.log(gutil.colors.red('== Failed =='));
-        failed.forEach(function(result) {
+        failed.forEach(function (result) {
             gutil.log('  ' + gutil.colors.underline(result.project.name));
             gutil.log('    ' + result.reason);
             if (result.validationResult) {
@@ -237,7 +253,7 @@ gulp.task('validate_contribute_json', function(gulpCallback) {
         });
 
         gutil.log(gutil.colors.yellow('== Skipped =='));
-        skipped.forEach(function(result) {
+        skipped.forEach(function (result) {
             gutil.log('  ' + gutil.colors.underline(result.project.name));
             gutil.log('    ' + result.reason);
         });
@@ -250,8 +266,8 @@ function getContributeJSON(project, callback) {
     }
 
     var url = util.format(CONTRIBUTE_JSON_URL, project.github.user,
-                          project.github.repository);
-    request(url, function(error, response, body) {
+        project.github.repository);
+    request(url, function (error, response, body) {
         if (error) {
             callback(null, 'Error downloading contribute.json: ' + error);
         } else if (response.statusCode != 200) {
@@ -268,9 +284,10 @@ function getContributeJSON(project, callback) {
 }
 
 var _contributeSchema = null;
+
 function getContributeSchema(callback) {
     if (!_contributeSchema) {
-        request(CONTRIBUTE_JSON_SCHEMA, function(error, response, body) {
+        request(CONTRIBUTE_JSON_SCHEMA, function (error, response, body) {
             // TODO: Handle errors fetching this.
             _contributeSchema = JSON.parse(body);
             callback(_contributeSchema);
@@ -281,7 +298,7 @@ function getContributeSchema(callback) {
 }
 
 function validateContributeJSON(contributeJSON, callback) {
-    getContributeSchema(function(contributeSchema) {
+    getContributeSchema(function (contributeSchema) {
         callback(jsonschema.validate(contributeJSON, contributeSchema));
     });
 }
@@ -292,8 +309,8 @@ function validateContributeJSON(contributeJSON, callback) {
  */
 function allProjects(projects, filter) {
     var _allProjects = [];
-    ['websites', 'libraries', 'apps', 'other'].forEach(function(category) {
-        projects[category].forEach(function(project) {
+    ['websites', 'libraries', 'apps', 'other'].forEach(function (category) {
+        projects[category].forEach(function (project) {
             if (filter && !filter(project)) return;
             _allProjects.push(project);
         });
@@ -327,7 +344,7 @@ function annotateProject(project, callback) {
         async.series([
             annotateProjectGithub.bind(null, project),
             annotateProjectContributeJSON.bind(null, project),
-        ], function() {
+        ], function () {
             if (project.description) {
                 project.searchData.push(project.description);
             }
@@ -347,7 +364,7 @@ function annotateProjectGithub(project, callback) {
     github.repos.get({
         user: project.github.user,
         repo: project.github.repository,
-    }, function(err, result) {
+    }, function (err, result) {
         if (err) {
             callback(err, project);
         } else {
@@ -364,7 +381,7 @@ function annotateProjectGithub(project, callback) {
  * Annotate a project with info from its contribute.json file.
  */
 function annotateProjectContributeJSON(project, callback) {
-    getContributeJSON(project, function(contributeJSON, error) {
+    getContributeJSON(project, function (contributeJSON, error) {
         if (error) {
             callback(error, project);
         } else {
